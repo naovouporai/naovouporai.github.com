@@ -8,12 +8,39 @@
       <br />
       <p></p>
       <h1>Redirecting to Forecasting Mobile...</h1>
+
+      <label for="appIDInput">Enter App Id:</label>
+      <input type="text" id="appIDInput" />
+
+      <label for="userTokenInput">Enter Token:</label>
+      <input type="text" id="userTokenInput" />
+
+      <button id="redirectButton">Redirect</button>
     </center>
+
     <script>
-      setTimeout(function () {
-        window.location.href =
-          "exp://192.168.1.176:8081/--/forecasting?tokenUser=ZjdiZGNhZGEtNzFiOS00ZjQ4LWEzYTctMWIyM2M0YmQ4ZDU0";
-      }, 1000);
+      const redirectButton = document.getElementById("redirectButton");
+
+      redirectButton.addEventListener("click", redirect);
+
+      function redirect() {
+        const appID = document.getElementById("appIDInput").value;
+        const userToken = document.getElementById("userTokenInput").value;
+        const url = "https://example.com/?token=" + userToken;
+        const url2 =
+          "exp://u.expo.dev/update/" +
+          appID +
+          "/--/forecasting?tokenUser=" +
+          userToken;
+        const url3 =
+          "exp://192.168.1.176:8081/--/forecasting?tokenUser=" + userToken;
+        window.location.href = url3;
+      }
+
+      // setTimeout(function () {
+      //   window.location.href =
+      //     "exp://192.168.1.176:8081/--/forecasting?tokenUser=ZjdiZGNhZGEtNzFiOS00ZjQ4LWEzYTctMWIyM2M0YmQ4ZDU0";
+      // }, 1000);
     </script>
   </body>
 </html>
