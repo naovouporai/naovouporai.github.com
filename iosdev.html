@@ -8,14 +8,19 @@
       <br />
       <p></p>
       <h1>Redirecting to Forecasting Mobile...</h1>
+      <button id="redirectButton">Redirect</button>
     </center>
 
     <script>
       const urlLocal = "exp://192.168.1.176:8081/--/ctxmobile";
 
-      setTimeout(function () {
-        window.location.href = urlLocal;
-      }, 5000);
+      const button = document.getElementById("redirectButton");
+
+      button.addEventListener("click", function () {
+        setTimeout(function () {
+          window.location.href = urlLocal;
+        }, 1000);
+      });
     </script>
   </body>
 </html>
