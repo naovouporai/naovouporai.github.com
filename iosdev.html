@@ -3,8 +3,8 @@
   <head>
     <title>Forecasting Demo</title>
     <style>
-      /* Add CSS styles for the button */
-      #redirectButton {
+      /* Common styles for both buttons */
+      .redirectButton {
         padding: 15px 30px; /* Increase padding */
         font-size: 20px; /* Larger font size */
         background-color: #006298; /* Background color */
@@ -12,11 +12,12 @@
         border: none;
         border-radius: 5px; /* Rounded corners */
         cursor: pointer; /* Cursor changes to pointer on hover */
+        margin: 5px; /* Space between buttons */
       }
 
-      /* Add styles for larger touch targets on mobile devices */
+      /* Larger touch targets on mobile devices */
       @media (max-width: 600px) {
-        #redirectButton {
+        .redirectButton {
           padding: 20px 40px; /* Even larger padding for mobile */
           font-size: 24px; /* Larger font size for mobile */
         }
@@ -28,15 +29,27 @@
       <br />
       <p></p>
       <h1>Redirecting to Forecasting Mobile...</h1>
-      <button id="redirectButton">Redirect</button>
+      <button id="redirectButton" class="redirectButton">Redirect</button>
+      <button id="forecastButton" class="redirectButton">
+        Redirect Forecasting
+      </button>
     </center>
 
     <script>
       const urlLocal = "exp://192.168.1.176:8081/--/ctxmobile";
+      const urlForecasting =
+        "exp://192.168.1.176:8081/--/forecasting?tokenUser=YmM1ZmZhODMtNjc5MS00ODIyLTlmMTctNDk5NDI1YTY1MDE0";
 
-      const button = document.getElementById("redirectButton");
+      const redirectButton = document.getElementById("redirectButton");
+      const forecastButton = document.getElementById("forecastButton");
 
-      button.addEventListener("click", function () {
+      redirectButton.addEventListener("click", function () {
+        setTimeout(function () {
+          window.location.href = urlLocal;
+        }, 1000);
+      });
+
+      forecastButton.addEventListener("click", function () {
         setTimeout(function () {
           window.location.href = urlLocal;
         }, 1000);
