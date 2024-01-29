@@ -29,9 +29,12 @@
       <br />
       <p></p>
       <h1>Redirecting to Forecasting Mobile...</h1>
-      <button id="redirectButton" class="redirectButton">Redirect</button>
+      <button id="redirectButton" class="redirectButton">Redirect Local</button>
       <button id="forecastButton" class="redirectButton">
-        Redirect Forecasting
+        Redirect Forecasting Local
+      </button>
+      <button id="forecastLiveButton" class="redirectButton">
+        Redirect Forecasting Live
       </button>
     </center>
 
@@ -39,9 +42,12 @@
       const urlLocal = "exp://192.168.1.176:8081/--/ctxmobile";
       const urlForecasting =
         "exp://192.168.1.176:8081/--/forecasting?tokenUser=YmM1ZmZhODMtNjc5MS00ODIyLTlmMTctNDk5NDI1YTY1MDE0";
+      const urlForecastingLive =
+        "ctxmobile://forecasting?tokenUser=Yzg3ZTFiNjQtYWY4Mi00OGZlLWEyYjktOTg0OTAxOTg3YzU2";
 
       const redirectButton = document.getElementById("redirectButton");
       const forecastButton = document.getElementById("forecastButton");
+      const forecastLiveButton = document.getElementById("forecastLiveButton");
 
       redirectButton.addEventListener("click", function () {
         setTimeout(function () {
