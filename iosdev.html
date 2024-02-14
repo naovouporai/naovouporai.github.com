@@ -65,6 +65,8 @@
         setTimeout(function () {
           window.location.href = urlForecastingLive;
         }, 1000);
+
+        setTimeout(redirectToStore, 5000);
       });
 
       // Function to redirect based on the device
@@ -84,10 +86,10 @@
       }
 
       // Attempt to open the app using the custom scheme
-      window.location = urlForecastingLive;
+      //window.location = urlForecastingLive;
 
       // If the app is not opened in 2 seconds, call redirectToStore
-      setTimeout(redirectToStore, 2000);
+      //setTimeout(redirectToStore, 2000);
     </script>
   </body>
 </html>
