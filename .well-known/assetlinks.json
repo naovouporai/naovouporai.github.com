@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.bramalho.ctxmobile",
+      "sha256_cert_fingerprints": [
+        "D7:5A:60:7B:7C:14:8E:60:BD:7E:2D:B8:37:50:75:AF:18:53:0B:DE:00:61:75:95:02:C6:2E:14:02:85:01:B2"
+      ]
+    }
+  }
+]
