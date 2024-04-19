@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Forecasting Demo</title>
+    <style>
+      /* Common styles for both buttons */
+      .redirectButton {
+        padding: 15px 30px; /* Increase padding */
+        font-size: 20px; /* Larger font size */
+        background-color: #006298; /* Background color */
+        color: white; /* Text color */
+        border: none;
+        border-radius: 5px; /* Rounded corners */
+        cursor: pointer; /* Cursor changes to pointer on hover */
+        margin: 5px; /* Space between buttons */
+      }
+
+      /* Larger touch targets on mobile devices */
+      @media (max-width: 600px) {
+        .redirectButton {
+          padding: 20px 40px; /* Even larger padding for mobile */
+          font-size: 24px; /* Larger font size for mobile */
+        }
+      }
+      /* https://is1-ssl.mzstatic.com/image/thumb/Purple116/v4/72/7c/91/727c9141-888d-3ba7-fea0-687917c9e406/AppIcon-0-0-1x_U007emarketing-0-7-0-85-220.png/230x0w.webp */
+      /* https://play-lh.googleusercontent.com/algsmuhitlyCU_Yy3IU7-7KYIhCBwx5UJG4Bln-hygBjjlUVCiGo1y8W5JNqYm9WW3s=w240-h480-rw */
+    </style>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Start SmartBanner configuration -->
+    <meta name="smartbanner:title" content="CONTEXT World" />
+    <meta name="smartbanner:author" content="CONTEXT World Limited" />
+    <meta name="smartbanner:price" content="FREE" />
+    <meta name="smartbanner:price-suffix-apple" content=" - On the App Store" />
+    <meta name="smartbanner:price-suffix-google" content=" - In Google Play" />
+    <meta name="smartbanner:icon-apple" content="/icon.png" />
+    <meta name="smartbanner:icon-google" content="/icon.png" />
+    <meta name="smartbanner:button" content="VIEW" />
+    <meta
+      name="smartbanner:button-url-apple"
+      content="https://apps.apple.com/us/app/expo-go/id982107779"
+    />
+    <meta
+      name="smartbanner:button-url-google"
+      content="https://play.google.com/store/apps/details?id=host.exp.exponent&hl=en"
+    />
+    <meta name="smartbanner:enabled-platforms" content="android,ios" />
+    <meta name="smartbanner:close-label" content="Close" />
+    <!-- End SmartBanner configuration -->
+
+    <link rel="stylesheet" href="/dist/smartbanner.min.css" />
+    <script src="/dist/smartbanner.min.js"></script>
+  </head>
+  <body>
+    <center>
+      <br />
+      <p></p>
+      <h1>Redirecting to Forecasting Mobile...</h1>
+    </center>
+
+    <script>
+      const urlLocal = "exp://192.168.1.176:8081/--/ctxmobile";
+      const urlForecasting =
+        "exp://192.168.1.176:8081/--/forecasting?tokenUser=NWM0M2E4MjAtZGI5MC00MGE1LWJjYTgtYTkxOTdkNzdiYWM1";
+      const urlForecastingLive =
+        "ctxmobile://forecasting?tokenUser=NWM0M2E4MjAtZGI5MC00MGE1LWJjYTgtYTkxOTdkNzdiYWM1";
+
+      const redirectButton = document.getElementById("redirectButton");
+      const forecastButton = document.getElementById("forecastButton");
+      const forecastLiveButton = document.getElementById("forecastLiveButton");
+
+      redirectButton.addEventListener("click", function () {
+        setTimeout(function () {
+          window.location.href = urlLocal;
+        }, 1000);
+      });
+
+      forecastButton.addEventListener("click", function () {
+        setTimeout(function () {
+          window.location.href = urlForecasting;
+        }, 1000);
+      });
+
+      forecastLiveButton.addEventListener("click", function () {
+        //setTimeout(function () {
+        window.location.href = urlForecastingLive;
+        //}, 1000);
+
+        //setTimeout(redirectToStore, 1000);
+      });
+
+      // Function to redirect based on the device
+      function redirectToStore() {
+        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+        // Redirect to Google Play if the user is on an Android device
+        if (/android/i.test(userAgent)) {
+          window.location =
+            "https://play.google.com/store/apps/details?id=com.google.android.googlequicksearchbox";
+        }
+
+        // Redirect to the App Store if the user is on an iOS device
+        if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+          window.location = "https://apps.apple.com/app/google/id284815942";
+        }
+      }
+
+      // Attempt to open the app using the custom scheme
+      //window.location = urlForecastingLive;
+
+      // If the app is not opened in 2 seconds, call redirectToStore
+      //setTimeout(redirectToStore, 2000);
+    </script>
+  </body>
+</html>
