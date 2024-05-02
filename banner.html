@@ -60,35 +60,29 @@
     </center>
 
     <script>
-      const urlLocal = "exp://192.168.1.176:8081/--/ctxmobile";
-      const urlForecasting =
-        "exp://192.168.1.176:8081/--/forecasting?tokenUser=NWM0M2E4MjAtZGI5MC00MGE1LWJjYTgtYTkxOTdkNzdiYWM1";
+      window.onload = function () {
+        // Function to get the value of a query parameter by name
+        function getQueryParam(name) {
+          name = name.replace(/[\[\]]/g, "\\$&");
+          var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(window.location.href);
+          if (!results) return null;
+          if (!results[2]) return "";
+          return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        // Get the tokenUser from the URL
+        var tokenUser = getQueryParam("tokenUser");
+
+        // Construct the mobile app URL with the token
+        var appUrl = "ctxmobile://forecasting?tokenUser=" + tokenUser;
+
+        // Redirect to the mobile app URL
+        window.location.href = appUrl;
+      };
+
       const urlForecastingLive =
         "ctxmobile://forecasting?tokenUser=NWM0M2E4MjAtZGI5MC00MGE1LWJjYTgtYTkxOTdkNzdiYWM1";
-
-      const redirectButton = document.getElementById("redirectButton");
-      const forecastButton = document.getElementById("forecastButton");
-      const forecastLiveButton = document.getElementById("forecastLiveButton");
-
-      redirectButton.addEventListener("click", function () {
-        setTimeout(function () {
-          window.location.href = urlLocal;
-        }, 1000);
-      });
-
-      forecastButton.addEventListener("click", function () {
-        setTimeout(function () {
-          window.location.href = urlForecasting;
-        }, 1000);
-      });
-
-      forecastLiveButton.addEventListener("click", function () {
-        //setTimeout(function () {
-        window.location.href = urlForecastingLive;
-        //}, 1000);
-
-        //setTimeout(redirectToStore, 1000);
-      });
 
       // Function to redirect based on the device
       function redirectToStore() {
