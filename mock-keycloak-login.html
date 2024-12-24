@@ -1,111 +1,143 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <!-- Ensures proper scaling on mobile devices -->
+    <!-- Ensures the page scales appropriately on mobile -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Keycloak Login</title>
+    <title>Mock Keycloak Login</title>
     <style>
-      /* Reset and base styles */
-      * {
-        box-sizing: border-box;
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
         margin: 0;
         padding: 0;
+        background: #f5f5f5;
       }
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #f5f5f5;
-      }
-
-      /* Container that centers the content on the page */
-      .login-container {
+      .container {
         max-width: 400px;
-        width: 90%;
-        margin: 60px auto;
-        background: #ffffff;
+        margin: 40px auto;
         padding: 20px;
+        background: #fff;
         border-radius: 8px;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       }
-
       h1 {
         text-align: center;
-        margin-bottom: 20px;
+        margin-bottom: 1rem;
       }
-
       p {
         text-align: center;
-        margin-bottom: 24px;
-        color: #555;
+        margin-bottom: 1.5rem;
       }
-
+      .form-group {
+        margin-bottom: 1.2rem;
+      }
       label {
         display: block;
-        margin-bottom: 6px;
-        color: #333;
+        margin-bottom: 0.5rem;
         font-weight: 600;
       }
-
       input {
         width: 100%;
-        padding: 10px;
-        margin-bottom: 16px;
-        border-radius: 4px;
+        padding: 0.8rem;
+        font-size: 1rem;
         border: 1px solid #ccc;
-        font-size: 16px;
+        border-radius: 4px;
       }
-
-      button {
+      .button {
         width: 100%;
-        padding: 12px;
-        margin-top: 8px;
+        padding: 0.8rem;
+        font-size: 1rem;
         border: none;
         border-radius: 4px;
-        background-color: #005892; /* Keycloak or brand color */
-        color: #fff;
-        font-size: 16px;
+        margin-bottom: 1rem;
         cursor: pointer;
       }
-
-      button:hover {
+      /* Primary Login button */
+      .login-btn {
+        background-color: #005892;
+        color: #fff;
+      }
+      .login-btn:hover {
         background-color: #00406d;
       }
-
-      /* Responsive spacing for smaller screens */
-      @media (max-width: 400px) {
-        body {
-          margin: 0 10px;
-        }
-        .login-container {
-          margin-top: 40px;
+      /* Google button */
+      .google-btn {
+        background-color: #fff;
+        color: #444;
+        border: 1px solid #ccc;
+      }
+      .google-btn:hover {
+        background-color: #f7f7f7;
+      }
+      /* Apple button */
+      .apple-btn {
+        background-color: #000;
+        color: #fff;
+      }
+      .apple-btn:hover {
+        background-color: #333;
+      }
+      /* For smaller screens, ensure layout is still comfortable */
+      @media (max-width: 480px) {
+        .container {
+          margin: 20px;
+          padding: 15px;
         }
       }
     </style>
   </head>
   <body>
-    <div class="login-container">
-      <h1>Keycloak</h1>
-      <p>Please log in to continue</p>
+    <div class="container">
+      <h1>Mock Keycloak Login</h1>
+      <p>Sign in with your credentials or use a social provider:</p>
 
-      <label for="username">Username:</label>
-      <input type="text" id="username" placeholder="Enter username" />
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="username" />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="password" />
+      </div>
 
-      <label for="password">Password:</label>
-      <input type="password" id="password" placeholder="Enter password" />
+      <!-- Standard Login button -->
+      <button class="button login-btn" onclick="doLogin()">Login</button>
 
-      <button onclick="doLogin()">Login</button>
+      <!-- Login with Google mock button -->
+      <button class="button google-btn" onclick="doLoginGoogle()">
+        Login with Google
+      </button>
+
+      <!-- Login with Apple mock button -->
+      <button class="button apple-btn" onclick="doLoginApple()">
+        Login with Apple
+      </button>
     </div>
 
     <script>
-      // This function simulates a successful login, then redirects
-      // back to your app’s custom URI scheme with some mock code/state.
-      function doLogin() {
-        // Replace this with the actual scheme for your Expo app:
-        // e.g., "mycoolapp://redirect", "myapp://auth", etc.
-        const redirectUri = "ctxmobile://redirect?code=abc123&state=xyz";
+      // Replace this with your app's redirect URI scheme.
+      // Example: "yourapp://redirect"
+      const APP_REDIRECT_SCHEME = "ctxmobile://redirect";
 
-        // Perform the redirect.
-        // Note: 'replace' avoids storing this page in the browser history.
+      // Standard login
+      function doLogin() {
+        // Mock code for a successful login
+        const redirectUri = `${APP_REDIRECT_SCHEME}?code=abc123&state=xyz`;
+        window.location.replace(redirectUri);
+      }
+
+      // Mock Google login
+      function doLoginGoogle() {
+        // Different code param, to indicate "Google" flow
+        const redirectUri = `${APP_REDIRECT_SCHEME}?code=goog123&state=goog`;
+        window.location.replace(redirectUri);
+      }
+
+      // Mock Apple login
+      function doLoginApple() {
+        // Different code param, to indicate "Apple" flow
+        const redirectUri = `${APP_REDIRECT_SCHEME}?code=appl123&state=appl`;
         window.location.replace(redirectUri);
       }
     </script>
