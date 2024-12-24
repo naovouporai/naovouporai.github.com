@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Mock Keycloak Login</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 40px;
+      }
+      .container {
+        max-width: 400px;
+        margin: 0 auto;
+      }
+      label {
+        display: block;
+        margin-bottom: 6px;
+      }
+      input {
+        margin-bottom: 16px;
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+      }
+      button {
+        padding: 10px 20px;
+        background: #005892;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #00406d;
+      }
+      h1 {
+        text-align: center;
+      }
+      p {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Keycloak Login</h1>
+      <p>Fill in credentials (or leave empty) and click “Login”.</p>
+      <label for="username">Username:</label>
+      <input type="text" id="username" placeholder="username" />
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" placeholder="password" />
+
+      <button onclick="doLogin()">Login</button>
+    </div>
+
+    <script>
+      // This function simulates a successful login, then redirects
+      // back to your app’s custom URI scheme with some mock code and state.
+      function doLogin() {
+        // Suppose your app’s scheme is "yourapp://redirect"
+        // Keycloak typically returns something like "code=abc123" & "state=xyz"
+        const redirectUri = "ctxmobile://redirect?code=abc123&state=xyz";
+
+        // Perform the redirect
+        window.location.replace(redirectUri);
+      }
+    </script>
+  </body>
+</html>
