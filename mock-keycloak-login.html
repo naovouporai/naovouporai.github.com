@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <!-- Ensures the page scales appropriately on mobile -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mock Keycloak Login</title>
+    <title>Keycloak Login</title>
     <style>
       body {
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
@@ -78,6 +78,22 @@
       .apple-btn:hover {
         background-color: #333;
       }
+      /* Icon styling to ensure consistent sizing and spacing */
+      .icon {
+        width: 20px;
+        height: 20px;
+        vertical-align: middle; /* keeps icon aligned with text */
+        margin-right: 8px; /* spacing between icon and text */
+      }
+
+      /* Example styling for the Register button, if needed */
+      .register-btn {
+        background-color: #e67e22;
+        color: #fff;
+      }
+      .register-btn:hover {
+        background-color: #c75f15;
+      }
       /* For smaller screens, ensure layout is still comfortable */
       @media (max-width: 480px) {
         .container {
@@ -89,7 +105,7 @@
   </head>
   <body>
     <div class="container">
-      <h1>Mock Keycloak Login</h1>
+      <h1>Keycloak Login</h1>
       <p>Sign in with your credentials or use a social provider:</p>
 
       <div class="form-group">
@@ -104,13 +120,28 @@
       <!-- Standard Login button -->
       <button class="button login-btn" onclick="doLogin()">Login</button>
 
-      <!-- Login with Google mock button -->
+      <!-- Register button -->
+      <button class="button register-btn" onclick="doRegister()">
+        Register
+      </button>
+
+      <!-- Google login button with Google "G" icon -->
       <button class="button google-btn" onclick="doLoginGoogle()">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+          alt="Google icon"
+          class="icon"
+        />
         Login with Google
       </button>
 
-      <!-- Login with Apple mock button -->
+      <!-- Apple login button with Apple icon -->
       <button class="button apple-btn" onclick="doLoginApple()">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg"
+          alt="Apple icon"
+          class="icon"
+        />
         Login with Apple
       </button>
     </div>
@@ -138,6 +169,13 @@
       function doLoginApple() {
         // Different code param, to indicate "Apple" flow
         const redirectUri = `${APP_REDIRECT_SCHEME}?code=appl123&state=appl`;
+        window.location.replace(redirectUri);
+      }
+
+      function doRegister() {
+        // Redirect or handle "Register" logic as you wish.
+        // For example, redirect to your app with some different parameter:
+        const redirectUri = "yourapp://redirect?register=true";
         window.location.replace(redirectUri);
       }
     </script>
