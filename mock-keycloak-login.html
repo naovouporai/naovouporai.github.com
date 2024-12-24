@@ -14,13 +14,15 @@
         background: #f5f5f5;
       }
       .container {
-        max-width: 400px;
-        margin: 40px auto;
-        padding: 20px;
+        width: 100%; /* Full width of the parent */
+        max-width: 400px; /* Don’t exceed 400px */
+        margin: 40px auto; /* Center horizontally, 40px top and bottom */
+        padding: 20px; /* Inner padding */
         background: #fff;
         border-radius: 8px;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       }
+
       h1 {
         text-align: center;
         margin-bottom: 1rem;
@@ -95,11 +97,25 @@
       .register-btn:hover {
         background-color: #c75f15;
       }
+      /* Make sure all elements use border-box sizing */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      /* Reset default body margins/padding if needed */
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
       /* For smaller screens, ensure layout is still comfortable */
       @media (max-width: 480px) {
         .container {
-          margin: 20px;
+          margin: 20px auto;
           padding: 15px;
+          width: 90%; /* just to give some breathing space on tiny screens */
         }
       }
     </style>
