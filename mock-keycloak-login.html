@@ -169,9 +169,19 @@
       const APP_REDIRECT_SCHEME = "ctxmobile://redirect";
 
       // Standard login
+      // function doLogin() {
+      //   // Mock code for a successful login
+      //   const redirectUri = `${APP_REDIRECT_SCHEME}?code=abc123&state=xyz`;
+      //   window.location.replace(redirectUri);
+      // }
+
       function doLogin() {
-        // Mock code for a successful login
-        const redirectUri = `${APP_REDIRECT_SCHEME}?code=abc123&state=xyz`;
+        // Get the username from the input field
+        const username = document.getElementById("username").value;
+        // Append it to the redirect URI (using encodeURIComponent for safety)
+        const redirectUri = `${APP_REDIRECT_SCHEME}?code=abc123&state=xyz&username=${encodeURIComponent(
+          username
+        )}`;
         window.location.replace(redirectUri);
       }
 
